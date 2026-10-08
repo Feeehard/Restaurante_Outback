@@ -1,6 +1,16 @@
 require('dotenv').config();
 
+
+const Express = require('express')
+const app = Express()
 const mysql = require('mysql2');
+const routes = require("./routes/outbackRoutes")
+
+app.set('view engine', 'ejs');
+
+app.use('/', routes);
+
+app.listen(3000);
 
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
